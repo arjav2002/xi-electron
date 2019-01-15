@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, Menu } from 'electron';
 import { enableLiveReload } from 'electron-compile';
 import { DEVMODE } from '../utils/environment';
 
@@ -14,6 +14,8 @@ let win: BrowserWindow | null = null;
 
 app.on('ready', async () => {
 
+  Menu.setApplicationMenu(null);
+  // default menu runs on OS theme which is not uniform across platforms
   win = new BrowserWindow({
     show: true,
     webPreferences: {
